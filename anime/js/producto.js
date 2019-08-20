@@ -1,6 +1,44 @@
+/*$(document).on("ready", function(){
+    listar();
+});
+
+var listar = function(){
+    var table = $("#example").DataTable({
+        ajax:{
+            type: "POST",
+            dataType: 'json',
+            url: "../listar.php"
+        },
+        columns:[
+            {"data": "Cod_producto"},
+            {"data": "Valor_uni"},
+            {"data": "Costo"},
+            {"data": "Cantidad_llego"},
+            {"data": "Cantidad_actual"}
+            ]    
+    });
+}*/
+
+
 $(document).ready( function () {
-    $('#example').DataTable();
-} );
+    $("#example").DataTable({
+        "ajax":{
+                "type": "POST",
+                "dataType": 'json',
+                "url": "php/listar.php"
+            },
+            "columns":[
+                {"data": "Cod_producto"},
+                {"data": "Valor_uni"},
+                {"data": "Costo"},
+                {"data": "Cantidad_llego"},
+                {"data": "Cantidad_actual"}
+            ]    
+    })
+});
+ 
+
+
 function filePreview(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
