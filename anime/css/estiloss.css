@@ -5,7 +5,7 @@
 
 
 html, body{               /*modificado*/
-	overflow: hidden;
+	overflow: auto;
 	padding: 0;
 	background-repeat: no-repeat;
 	background-attachment: fixed;

@@ -1,4 +1,4 @@
-$(document).ready(function(){
+/*$(document).ready(function(){
     $.ajax({
         type:'POST',
         url:'php/consulta.php',
@@ -12,4 +12,4 @@ $(document).ready(function(){
     alert('ERROR')
 })
 })
-
+*/

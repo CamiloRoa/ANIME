@@ -16,7 +16,6 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" href="bootstrap.min.js"></script>
     <script src="js/producto.js"></script>
-    <script src="js/consulta.js"></script>
 
     
 </head> 
@@ -108,8 +107,7 @@
                 <a href="index.php"><img src="img/pagina-de-inicio.png"/></a>
             </div>
             <div id="respuesta"></div>
-        </div>
-    </div> 
+        
         <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive"> 
@@ -125,7 +123,11 @@
                             <th>T. Producto</th>
                         </tr>
                     </thead>
-
+                    </div>
+                    </div>
+    </div> 
+    </div>
+    </div>
                             
 
 

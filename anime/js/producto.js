@@ -21,7 +21,31 @@ var listar = function(){
 
 
 $(document).ready( function () {
-    $("#example").DataTable({
+    $.ajax({
+        type:'POST',
+        url: "php/productoControlador.php",		
+        data: "controle=5",
+		success: function(resp){                        
+                $('#TipPro').html(resp); 
+                    }
+    })
+	
+	$.ajax({
+        type:'POST',
+        url: "php/productoControlador.php",		
+        data: "controle=6",
+		success: function(resp){                        
+            $('#SelTienda').html(resp); 
+                    }
+    })
+		
+	cargaGrilla();
+	
+	
+});
+function cargaGrilla(){
+	
+	  $("#example").DataTable({
         "ajax":{
                 "type": "POST",
                 "dataType": 'json',
@@ -32,12 +56,15 @@ $(document).ready( function () {
                 {"data": "Valor_uni"},
                 {"data": "Costo"},
                 {"data": "Cantidad_llego"},
-                {"data": "Cantidad_actual"}
+                {"data": "Cantidad_actual"},
+                {"data": "Tienda"},
+                {"data": "Tipo_producto"}
+
+
             ]    
     })
-});
- 
-
+	
+}
 
 function filePreview(input) {
     if (input.files && input.files[0]) {
@@ -57,13 +84,15 @@ function Registrar()
                 var u_prod =  $("#VUPro").val();
                 var cos = $("#CostoPro").val();
                 var clleg = $("#CllegadaPro").val();
+                var tipo =  $("#TipPro").val();
+                var selec =  $("#SelTienda").val();                
                 var d_prod = $("#DesPro").val();
 
                 $.ajax({
                     type: "POST",
                     dataType: 'json',
                     url: "php/productoControlador.php",
-                    data: "controle=1&product="+prod+"&uni_prod="+u_prod+"&cost_prod="+cos+"&cant_lleg="+clleg+"&des_prod="+d_prod+"&imagen="+img+"",
+                    data: "controle=1&product="+prod+"&uni_prod="+u_prod+"&cost_prod="+cos+"&cant_lleg="+clleg+"&tipop="+tipo+"&tienda="+selec+"&des_prod="+d_prod+"&imagen="+img+"",
                     success: function(resp){                        
                         $('#respuesta').html(resp);     
                          Limpiar();                     
@@ -87,6 +116,8 @@ function Buscar()
                         $('#CostoPro').val(resp['Costo']);
                         $('#cantidad').val(resp['Cantidad_actual']);  
                         $('#CllegadaPro').val(resp['Cantidad_llego']); 
+                        $('#TipPro').val(resp['Tipo_producto']); 
+                        $('#SelTienda').val(resp['Tienda']); 
                         $('#DesPro').val(resp['Descripcion']); 
                         $('#btnModificar').prop('disabled', false);
                         $('#btnEliminar').prop('disabled', false);
@@ -102,6 +133,8 @@ function Modificar()
                 var u_prod= $("#VUPro").val();
                 var cos =   $("#CostoPro").val();
                 var clleg = $("#CllegadaPro").val();
+                var tipo =  $("#TipPro").val();
+                var selec =  $("#SelTienda").val(); 
                 var d_prod= $("#DesPro").val();
 
                 
@@ -109,7 +142,7 @@ function Modificar()
                     type: "POST",
                     dataType: 'json',
                     url: "php/productoControlador.php",
-                    data: "controle=4&product="+prod+"&uni_prod="+u_prod+"&cost_prod="+cos+"&cant_lleg="+clleg+"&des_prod="+d_prod+"",
+                    data: "controle=4&product="+prod+"&uni_prod="+u_prod+"&cost_prod="+cos+"&cant_lleg="+clleg+"&tipop="+tipo+"&tienda="+selec+"&des_prod="+d_prod+"",
                     success: function(resp){
                         $('#respuesta').html(resp);
                         Limpiar();
@@ -143,6 +176,8 @@ function Limpiar()
     $("#cantidad").val("");   
     $("#CActualPro").val("");
     $("#CllegadaPro").val("");
+    $("#TipPro").val("");
+    $("#SelTienda").val("");
     $("#DesPro").val("");
     $("#imagen2").val("");
     $('#btnModificar').prop('disabled', true);
