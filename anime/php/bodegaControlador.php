@@ -99,6 +99,21 @@ class BaseDatos
            }    
     
     }
+function getConn(){
+    $query = "SELECT * FROM bodega";
+    $resultado = mysqli_query($this->conexion, $query);
+
+    if(!$resultado){
+        die ("Error");
+}   else{
+        while( $data = mysqli_fetch_assoc($resultado)){
+        $arreglo["data"][] = $data;
+    }
+    echo json_encode($arreglo);
+}
+
+mysqli_free_result($resultado);
+}
 
    
 }
@@ -125,6 +140,10 @@ class BaseDatos
               $db->ModificarBodega($_POST['idbodega'], $_POST['depart'], $_POST['mun'], $_POST['tele'], $_POST['dire']);
               $db->desconectar(); 
          break;        
+     case '5':
+              $db->getConn();
+              $db->desconectar(); 
+    break; 
      
     
  }

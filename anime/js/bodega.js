@@ -1,3 +1,28 @@
+$(document).ready(function() {
+    cargaGrilla();
+} );
+
+function cargaGrilla(){
+	
+    $("#example").DataTable({
+      "ajax":{
+              "type": "POST",
+              "dataType": 'json',
+              "url": "php/bodegaControlador.php",
+              "data": "controle=5"
+          },
+          "columns":[
+              {"data": "Id_bodega"},
+              {"data": "Dept"},
+              {"data": "Municipio"},
+              {"data": "Tel"},
+              {"data": "Direccion"}
+
+          ] 
+  })
+}
+
+
 function recargarLista(){
     $.ajax({
         type:"POST",
@@ -32,7 +57,6 @@ function Registrar()
 
 function Buscar()
             { 
-
                 var idbod = $("#id_Bodega").val(); 
                 $.ajax({
                     type: "POST",

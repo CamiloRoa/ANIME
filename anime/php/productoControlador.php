@@ -100,7 +100,7 @@ class BaseDatos
     }
 	function getTProducto(){
 			
-        $query = 'SELECT * FROM `tipo_producto`';
+        $query = 'SELECT * FROM `tipo_producto`' ;
         $result = mysqli_query($this->conexion, $query); 			
         $listas = '<option value="0"> Seleccione Producto</option>';
         while($row = $result->fetch_array(MYSQLI_ASSOC)){
@@ -113,7 +113,7 @@ class BaseDatos
 }
 
     function getTienda(){			
-        $query = 'SELECT * FROM `tienda` group by Tienda';
+        $query = 'SELECT * FROM `tienda`';
         $result = mysqli_query($this->conexion, $query); 			
         $listas = '<option value="0"> Seleccione Tienda</option>';
         while($row = $result->fetch_array(MYSQLI_ASSOC)){

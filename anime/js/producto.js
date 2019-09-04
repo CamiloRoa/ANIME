@@ -58,7 +58,7 @@ function cargaGrilla(){
                 {"data": "Cantidad_llego"},
                 {"data": "Cantidad_actual"},
                 {"data": "Tienda"},
-                {"data": "Tipo_producto"}
+                {"data": "Tipo"}
 
 
             ]    
