@@ -1,3 +1,35 @@
+$(document).ready(function () {
+    cargaGrilla();
+});
+
+function cargaGrilla() {
+    $.ajax({
+        "type": "POST",
+        "dataType": 'json',
+        "url": "php/tiendaControlador.php",
+        "data": "controle=5",
+        success: function (data) {
+            console.log(data);
+            $.each(data, function (i, item) {
+                $("#example").DataTable({
+                    data: item,
+                    "columns": [
+                        { "data": 'Id_tienda' },
+                        { "data": "Dept" },
+                        { "data": "Municipios"},
+                        { "data": "Tel" },
+                        { "data": "Direccion" }
+
+
+                    ]
+                })
+
+            })
+        }
+
+    });
+}
+
 function recargarLista(){
     $.ajax({
         type:"POST",
@@ -17,7 +49,6 @@ function Registrar()
                 var mun =   $("#muni").val();
                 var tel =   $("#tel").val();
                 var dir =   $("#dir").val();
-
                 
                 $.ajax({
                     type: "POST",

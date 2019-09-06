@@ -61,20 +61,19 @@ class BaseDatos
     
     }
 
-   public function saveTienda($idtienda, $depto, $mun, $tel, $dir)
+    public function saveTienda($idtienda, $depto, $mun, $tel, $dir)
     {
            if(empty($idtienda) && isset($idtienda)){
                echo json_encode('<div class="alert alert-danger" align="center"><strong>Error! </strong>campos vaciosssssss!!</div>');
                exit();
 
            }else{
-                      $newTie = "INSERT INTO tienda (Id_tienda, Dept, Municipios, Tel, Direccion) VALUES ('".$idtienda."',  '".$depto."', '".$mun."',  '".$tel."', '".$dir."')";
-                         if(mysqli_query($this->conexion, $newTie)){
-                             echo json_encode('<div class="alert alert-success" align="center"><strong>Exitoso! </strong>Registro en tienda exitoso!!</div>');
+                $newTie = "INSERT INTO tienda (Id_tienda, Depto, Municipios, Tel, Direccion) VALUES ('".$idtienda."', '".$depto."', '".$mun."', '".$tel."', '".$dir."')";
+                      if(mysqli_query($this->conexion, $newTie)){
+                             echo json_encode('<div class="alert alert-success" align="center"><strong>Exitoso! </strong>Registro tienda exitoso!!</div>');
                          }else{
-                            echo json_encode('<div class="alert alert-danger" align="center"><strong>Error! </strong>Dato de tienda NO registrado!!</div>');
+                            echo json_encode('<div class="alert alert-danger" align="center"><strong>Error! </strong>Tienda NO registrado!!</div>');
                          }
-
            }    
     
     }
@@ -98,6 +97,22 @@ class BaseDatos
            }    
     
     }
+    function getConn(){
+            
+        $query = "SELECT * FROM tienda /*as p inner join Municipios as t on p.Municipio = t.Municipios*/"; 
+            $resultado = mysqli_query($this->conexion, $query);
+
+        if(!$resultado){
+            die ("Error");
+    }   else{
+            while( $data = mysqli_fetch_assoc($resultado)){
+            $arreglo["data"][] = $data;
+    }
+                echo json_encode($arreglo);
+}
+
+mysqli_free_result($resultado);
+}
 
    
 }
@@ -126,6 +141,9 @@ class BaseDatos
               $db->ModificarTienda($_POST['id_tienda'],  $_POST['departamento'], $_POST['municipio'], $_POST['tele'], $_POST['direc']);
               $db->desconectar(); 
          break;        
-     
+     case '5':
+              $db->getConn();
+              $db->desconectar(); 
+break;    
     
  }

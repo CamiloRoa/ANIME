@@ -1,6 +1,6 @@
 <?php
 
-include("conexion.php");
+/*include("conexion.php");
 
 
 $mysqli = getConn();
@@ -19,5 +19,5 @@ if(!$resultado){
 
 mysqli_free_result($resultado);
 mysqli_close($mysqli);
-
+*/
 ?>

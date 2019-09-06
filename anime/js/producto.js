@@ -43,28 +43,47 @@ $(document).ready( function () {
 	
 	
 });
-function cargaGrilla(){
-	
-	  $("#example").DataTable({
-        "ajax":{
-                "type": "POST",
-                "dataType": 'json',
-                "url": "php/listar.php"
-            },
-            "columns":[
-                {"data": "Cod_producto"},
-                {"data": "Valor_uni"},
-                {"data": "Costo"},
-                {"data": "Cantidad_llego"},
-                {"data": "Cantidad_actual"},
-                {"data": "Tienda"},
-                {"data": "Tipo"}
+function cargaGrilla() {
+    $.ajax({
+        "type": "POST",
+        "dataType": 'json',
+        "url": "php/productoControlador.php",
+        "data": "controle=7",
+        success: function (data) {
+            console.log(data);
+            $.each(data, function (i, item) {
+                $("#example").DataTable({
+                    data: item,
+                    "columns":[
+                        {"data": "Cod_producto"},
+                        {"data": "Valor_uni"},
+                        {"data": "Costo"},
+                        {"data": "Cantidad_llego"},
+                        {"data": "Cantidad_actual"},
+                        {"data": "Tienda"},
+                        {"data": "Tipo"}
+                    
+                    
+                    ] 
+                })
 
+            })
+        }
 
-            ]    
-    })
-	
+    });
+
 }
+/*"columns":[
+    {"data": "Cod_producto"},
+    {"data": "Valor_uni"},
+    {"data": "Costo"},
+    {"data": "Cantidad_llego"},
+    {"data": "Cantidad_actual"},
+    {"data": "Tienda"},
+    {"data": "Tipo"}
+
+
+]    */
 
 function filePreview(input) {
     if (input.files && input.files[0]) {
@@ -78,10 +97,11 @@ function filePreview(input) {
 }
 
 function Registrar()
+
             {
                 var img = $("#imagenes").val(); 
                 var prod = $("#CodPro").val();               
-                var u_prod =  $("#VUPro").val();
+                var u_prod = $("#VUPro").val();
                 var cos = $("#CostoPro").val();
                 var clleg = $("#CllegadaPro").val();
                 var tipo =  $("#TipPro").val();
