@@ -14,7 +14,7 @@ function cargaGrilla() {
                 $("#example").DataTable({
                     data: item,
                     "columns": [
-                        { "data": 'Id_bodega' },
+                        { "data": "Id_bodega" },
                         { "data": "Dept" },
                         { "data": "Municipio"},
                         { "data": "Tel" },

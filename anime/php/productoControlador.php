@@ -174,10 +174,10 @@ mysqli_free_result($resultado);
               $db->desconectar(); 
          break;  
      case '7':
-         $db->getConn();
-         $db->desconectar(); 
-break; 
-
+              $db->getConn();
+              $db->desconectar(); 
+         break; 
+    
 }
 
 

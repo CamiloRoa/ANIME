@@ -56,7 +56,7 @@ function Registrar()
                     url: "php/tiendaControlador.php",
                     data: "controle=1&id_tienda="+idtie+"&departamento="+dep+"&municipio="+mun+"&tele="+tel+"&direc="+dir+"",
                     success: function(resp){                        
-                        $('#respuesta').html(resp);     
+                        $('#respuesta').html(resp);  
                          Limpiar();                     
                     }
                 });

@@ -107,7 +107,21 @@ class BaseDatos
            }    
     
     }
+    function getConn(){
+        $query = "SELECT * FROM clientes";
+        $resultado = mysqli_query($this->conexion, $query);
 
+    if(!$resultado){
+        die ("Error");
+}   else{
+        while( $data = mysqli_fetch_assoc($resultado)){
+        $arreglo["data"][] = $data;
+    }
+    echo json_encode($arreglo);
+}
+
+    mysqli_free_result($resultado);
+    }
    
 }
 
@@ -132,7 +146,11 @@ class BaseDatos
      case '4':
               $db->ModificarCliente($_POST['cedula'], $_POST['nombre'], $_POST['email'], $_POST['telefono'], $_POST['direccion'], $_POST['ciudad']);
               $db->desconectar(); 
-         break;        
+         break; 
+     case '5':
+         $db->getConn();
+         $db->desconectar(); 
+         break;       
      
     
  }

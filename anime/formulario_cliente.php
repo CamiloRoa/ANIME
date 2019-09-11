@@ -8,9 +8,20 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/estiloss.css">
     <link rel="icon" type="img/logoico.ico" href="img/logoico.ico">
+    <!--datables CSS básico-->
+    <link rel="stylesheet" type="text/css" href="datatables/datatables.min.css"/>
+    <!--datables estilo bootstrap 4 CSS-->  
+    <link rel="stylesheet"  type="text/css" href="datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" href="bootstrap.min.js"></script>
     <script src="js/cliente.js"></script>
+    <!-- jQuery, Popper.js, Bootstrap JS -->
+    <script src="jquery/jquery-3.3.1.min.js"></script>
+    <script src="popper/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+      
+    <!-- datatables JS -->
+    <script type="text/javascript" src="datatables/datatables.min.js"></script>    
 
     
 </head>
@@ -79,8 +90,25 @@
                     <a href="index.php"><img src="img/pagina-de-inicio.png"/></a>
                 </div>  
                 <div id="respuesta"></div>
-        </div>
-        </div>
+                <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-responsive"> 
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <thead class="text-center">
+                        <tr>
+                            <th>Documento</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Telefono</th>
+                            <th>Direccion</th>
+                            <th>Ciudad</th>
+                        </tr>
+                    </thead>
+                    </div>
+                    </div>
+    </div> 
+    </div>
+    </div>
         <script type="text/javascript">
             $(document).ready(function(){     
                   $("#documentoText").keypress(function(e) {

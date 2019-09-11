@@ -67,8 +67,9 @@ class BaseDatos
                echo json_encode('<div class="alert alert-danger" align="center"><strong>Error! </strong>campos vaciosssssss!!</div>');
                exit();
 
+
            }else{
-                $newTie = "INSERT INTO tienda (Id_tienda, Depto, Municipios, Tel, Direccion) VALUES ('".$idtienda."', '".$depto."', '".$mun."', '".$tel."', '".$dir."')";
+                $newTie = "INSERT INTO tienda (Id_tienda, Dept, Municipios, Tel, Direccion) VALUES ('".$idtienda."', '".$depto."', '".$mun."', '".$tel."', '".$dir."')";
                       if(mysqli_query($this->conexion, $newTie)){
                              echo json_encode('<div class="alert alert-success" align="center"><strong>Exitoso! </strong>Registro tienda exitoso!!</div>');
                          }else{
@@ -111,7 +112,7 @@ class BaseDatos
                 echo json_encode($arreglo);
 }
 
-mysqli_free_result($resultado);
+            mysqli_free_result($resultado);
 }
 
    
@@ -121,7 +122,6 @@ mysqli_free_result($resultado);
  $db->conectar();
  switch ($_POST['controle']) {
      case '1':
-              //echo json_encode("hhh"); 
               $db->saveTienda($_POST['id_tienda'], $_POST['departamento'], $_POST['municipio'], $_POST['tele'], $_POST['direc']);
               $db->desconectar();       
          break;
